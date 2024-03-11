@@ -33,8 +33,10 @@ function App() {
         now.setHours(now.getHours() + 1);
     }
 
-    let start = now.toISOString().replace('T', ' ').substring(0, 19);
+    //Converting ISO to org.springframework.format.annotation.DateTimeFormat
 
+    let start = now.toISOString().replace('T', ' ').substring(0, 19);
+    
     now.setHours(now.getHours() + 1);
     let end = now.toISOString().replace('T', ' ').substring(0, 19);
 

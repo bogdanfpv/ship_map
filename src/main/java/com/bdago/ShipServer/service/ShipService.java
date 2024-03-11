@@ -20,6 +20,4 @@ public class ShipService {
         public List<String> getUniqueNamesInTimeframe(LocalDateTime start, LocalDateTime end) {
             return shipRepository.findUniqueNamesInTimeframe(start, end);
         }
-
-        //TODO: getLastPosition from unique MMSI found between start end.
 }
