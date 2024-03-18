@@ -1,7 +1,7 @@
 package com.bdago.ShipServer.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "ships")
@@ -18,7 +18,7 @@ public class Ship {
     private String MMSI;
 
     @Column(name = "BaseDate")
-    private LocalDateTime BaseDate;
+    private Timestamp BaseDate;
 
     @Column(name = "VesselName")
     private String VesselName;
@@ -43,11 +43,11 @@ public class Ship {
         this.MMSI = MMSI;
     }
 
-    public LocalDateTime getBaseDate() {
+    public Timestamp getBaseDate() {
         return BaseDate;
     }
 
-    public void setBaseDate(LocalDateTime BaseDate) {
+    public void setBaseDate(Timestamp BaseDate) {
         BaseDate = BaseDate;
     }
 

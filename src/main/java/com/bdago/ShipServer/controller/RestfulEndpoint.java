@@ -1,10 +1,11 @@
 package com.bdago.ShipServer.controller;
 
-import com.bdago.ShipServer.service.ShipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import com.bdago.ShipServer.time.TimeService;
+import com.bdago.ShipServer.projection.ShipProjection;
+import com.bdago.ShipServer.service.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,7 +35,9 @@ public class RestfulEndpoint {
         return timeService.getCurrentTime();
     }
 
-}
+    @GetMapping("/current-ships")
+    public List<ShipProjection> getCurrentShips() {
+        return shipService.getCurrentShips();
+    }
 
-//The client should send GET requests to /api/ships/unique-names?start=<start-time>&end=<end-time>
-//In this implementation, the client specifies the (start,end) to the server
+}

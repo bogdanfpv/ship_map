@@ -3,21 +3,26 @@ package com.bdago.ShipServer.time;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 @Service
 public class StartTimeService {
 
     private LocalDateTime start;
-    private String dataStartTime = "2022-01-01 00:00:00";
+    private LocalDateTime dataStartTime = LocalDateTime.of(2022, 1, 1, 0, 0, 0);
 
     public LocalDateTime getStartLocalDateTime() {
         return start;
     }
 
-    public LocalDateTime getDataStartTimeLocalDateTime() {
+    public LocalDateTime getDataStartTime() {
+        LocalDateTime dateTimeWithoutNanos = this.dataStartTime.truncatedTo(ChronoUnit.SECONDS);
+        return dateTimeWithoutNanos;
+    }
+
+    public String getDataStartTimeString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime dateTime = LocalDateTime.parse(dataStartTime, formatter);
-        return dateTime;
+        return this.dataStartTime.format(formatter);
     }
 
     public void setStartLocalDateTime(LocalDateTime start) {
